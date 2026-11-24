@@ -1,0 +1,10 @@
+.env
+credentials.json
+token.json
+data/
+.venv/
+__pycache__/
+.pytest_cache/
+notes.json
+galaxy/node_modules/
+galaxy/dist/

@@ -1,0 +1,18 @@
+﻿claude-agent-sdk
+google-api-python-client
+google-auth-httplib2
+google-auth-oauthlib
+SpeechRecognition
+PyAudio
+pyttsx3
+python-dotenv
+edge-tts>=7.3.1
+pygame
+openwakeword
+numpy
+# conversation mode (jarvis_os/conversation)
+sounddevice
+faster-whisper
+piper-tts
+miniaudio
+aiohttp

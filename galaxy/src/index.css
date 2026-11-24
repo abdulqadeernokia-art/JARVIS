@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { color-scheme: dark; --hud: #7fe7ff; --hud-dim: rgba(127, 231, 255, 0.35); }
+html, body, #root { margin: 0; height: 100%; overflow: hidden; background: #000; font-family: "Segoe UI Variable", "Segoe UI", system-ui, sans-serif; color: #d8f6ff; }
+::selection { background: rgba(127, 231, 255, 0.3); }
+::-webkit-scrollbar { width: 6px; } ::-webkit-scrollbar-thumb { background: rgba(127, 231, 255, 0.2); border-radius: 3px; }
+
+@layer components {
+  .glass { @apply rounded-xl border backdrop-blur-md; background: linear-gradient(160deg, rgba(10, 30, 48, 0.55), rgba(4, 12, 22, 0.45)); border-color: rgba(127, 231, 255, 0.16); box-shadow: inset 0 0 24px rgba(63, 184, 255, 0.05), 0 8px 40px rgba(0, 0, 0, 0.35); }
+  .hud-title { @apply text-[10px] font-semibold uppercase tracking-[0.28em]; color: var(--hud); }
+  .hud-btn { @apply rounded-md border px-3 py-1.5 text-xs uppercase tracking-widest transition-all duration-200; border-color: rgba(127, 231, 255, 0.25); color: #bfefff; background: rgba(63, 184, 255, 0.06); }
+  .hud-btn:hover { background: rgba(63, 184, 255, 0.18); border-color: rgba(127, 231, 255, 0.6); box-shadow: 0 0 16px rgba(63, 184, 255, 0.25); }
+  .hud-btn:disabled { @apply cursor-not-allowed opacity-40; }
+  .hud-btn.danger { border-color: rgba(255, 90, 100, 0.4); color: #ffc2c7; background: rgba(255, 60, 80, 0.08); }
+  .hud-btn.danger:hover { background: rgba(255, 60, 80, 0.22); box-shadow: 0 0 16px rgba(255, 60, 80, 0.3); }
+  .hud-btn.on { background: rgba(63, 184, 255, 0.25); border-color: rgba(127, 231, 255, 0.8); }
+  .hud-input { @apply w-full rounded-md border bg-transparent px-3 py-2 text-sm outline-none transition; border-color: rgba(127, 231, 255, 0.2); background: rgba(0, 10, 20, 0.4); }
+  .hud-input:focus { border-color: rgba(127, 231, 255, 0.6); box-shadow: 0 0 14px rgba(63, 184, 255, 0.18); }
+  .tile { @apply flex cursor-pointer flex-col items-start rounded-lg border p-3 text-left text-sm transition; border-color: rgba(127, 231, 255, 0.14); background: rgba(63, 184, 255, 0.04); }
+  .tile:hover { background: rgba(63, 184, 255, 0.14); border-color: rgba(127, 231, 255, 0.5); transform: translateY(-1px); }
+}
+
+.planet-label { font-family: Rajdhani, "Segoe UI", sans-serif; text-align: center; transform: translateY(-10px); white-space: nowrap; transition: opacity 0.3s; opacity: 0.55; }
+.planet-label.on { opacity: 1; }
+.planet-label .name { font-size: 12px; letter-spacing: 0.3em; text-transform: uppercase; color: #cff6ff; text-shadow: 0 0 10px rgba(63, 184, 255, 0.8); }
+.planet-label .key { display: inline-block; margin-right: 8px; padding: 0 5px; border: 1px solid rgba(127, 231, 255, 0.4); border-radius: 3px; font-size: 10px; letter-spacing: 0; }
+.planet-label .holo { margin-top: 8px; padding: 10px 14px; max-width: 260px; white-space: normal; border: 1px solid rgba(127, 231, 255, 0.35); border-radius: 8px;
+  background: linear-gradient(160deg, rgba(10, 40, 60, 0.7), rgba(4, 14, 26, 0.6)); backdrop-filter: blur(6px); box-shadow: 0 0 30px rgba(63, 184, 255, 0.2); animation: holo-in 0.35s ease-out; }
+.planet-label .desc { font-size: 13px; color: #e4f9ff; font-family: "Segoe UI", sans-serif; letter-spacing: 0.02em; }
+.planet-label .meta { margin-top: 6px; font-size: 9px; letter-spacing: 0.25em; color: #7fe7ff; }
+@keyframes holo-in { from { opacity: 0; transform: translateY(6px) scaleY(0.9); } to { opacity: 1; transform: none; } }
+
+.scanline::after { content: ""; position: absolute; inset: 0; pointer-events: none; border-radius: inherit;
+  background: repeating-linear-gradient(0deg, rgba(127, 231, 255, 0.025) 0 1px, transparent 1px 3px); }
+.fade-in { animation: fade 2.5s ease-out both; }
+@keyframes fade { from { opacity: 0; } to { opacity: 1; } }
